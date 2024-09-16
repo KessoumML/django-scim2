@@ -412,7 +412,7 @@ class GroupsView(FilterMixin, GetView, PostView, PutView, PatchView, DeleteView,
 class ServiceProviderConfigView(SCIMView):
     http_method_names = ['get']
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         config = get_service_provider_config_model()(request=request)
         content = json.dumps(config.to_dict())
         return HttpResponse(content=content,
